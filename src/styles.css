@@ -1,0 +1,47 @@
+body {
+  background-color: #ebebeb;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+p {
+        color: #0B135A; 
+        font-variant: small-caps;
+        max-width: max-content;
+}
+.header {
+        grid-area: header;
+        justify-content: space-evenly;
+        font-variant: small-caps;
+        font-weight: bold;
+        color: #0B135A;
+}
+.icon { grid-area: icon;
+        max-width: revert;
+        margin-top: 2rem;
+        color: #2D378D;
+        height: 5rem;
+        font-weight: bold;
+}
+.weather { grid-area: weather; }
+.footer { grid-area: footer;
+        max-width: max-content; }
+.container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header'
+    'icon icon icon icon weather weather'
+    'icon icon icon icon footer footer';
+  gap: 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  background-color: #FFFFFF;  
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+}
+.more {
+        font-weight: bold;
+        text-transform: capitalize;
+        color: #0B135A;
+        text-decoration: underline;
+}
+
