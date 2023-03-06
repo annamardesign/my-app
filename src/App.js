@@ -1,40 +1,41 @@
 import React, { useEffect, useState } from "react";
 import Weather from "./weather";
-import { mock } from "./common";
 import './App.css';
 import Search from "./search";
+import { API_URL, API_KEY } from "./common";
         
 
 function App() {
-  const [lat, setLat] = useState([]);
-  const [long, setLong] = useState([]);
-  const [data, setData] = useState([]);
+  const [lat, setLat] = useState(null);
+  const [long, setLong] = useState(null);
+  const [data, setData] = useState(null);
 
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       navigator.geolocation.getCurrentPosition(function(position) {
-//         setLat(position.coords.latitude);
-//         setLong(position.coords.longitude);
-//       });
-// console.log('lat', lat);
-//       await fetch(`${process.env.API_URL}/forecast?lat=${lat}&lon=${long}&appid=4ca03993201a3577d059b49d77755294`)
-//       .then(res => res.json())
-//       .then(result => {
-//         setData(result)
-//         console.log(result);
-//       });
-//     }
-//     fetchData();
-//   }, [lat,long])
+  useEffect(() => {
+    
+      navigator.geolocation.getCurrentPosition(function(position) {
+        setLat(position.coords.latitude);
+        setLong(position.coords.longitude);
+      });
+      const fetchData = async () => {
+        await fetch(`${API_URL}/forecast?lat=${lat}&lon=${long}&appid=${API_KEY}`)
+        .then(res => res.json())
+        .then(result => {
+          setData(result)
+        });
+      }
+      if(lat && long) {
+      fetchData();
+      }
+  
+  }, [lat,long])
 
   const handleCoordinates = (coordinates) => {
      const [latitude, longitude] = coordinates.split(" ");
      const fetchData = async () => {
-      await fetch(`${process.env.API_URL}/weather?lat=${latitude}&lon=${longitude}&appid=4ca03993201a3577d059b49d77755294`)
+      await fetch(`${API_URL}/forecast?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`)
       .then(res => res.json())
       .then(result => {
         setData(result)
-        console.log(result);
       });
     }
     fetchData();
@@ -42,12 +43,10 @@ function App() {
 
   return (
     <div className="App">
-      <Search  getCoordinates = {handleCoordinates}/>
-      {data ? (
-        <Weather weatherData={mock}/>
-      ): (
-        <div>No data for your location found.</div>
-      )}
+      <Search  className="search" getCoordinates = {handleCoordinates}/>
+      {data && 
+        <Weather weatherData={data}/>
+      }
     </div>
   );
 }
