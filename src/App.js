@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Weather from "./weather";
+import Weather from "./components/weather";
 import './App.css';
-import Search from "./search";
+import Search from "./components/search";
 import { API_URL, API_KEY } from "./common";
         
 
@@ -44,8 +44,7 @@ function App() {
   return (
     <div className="App">
       <Search  className="search" getCoordinates = {handleCoordinates}/>
-      {data && 
-        <Weather weatherData={data}/>
+      {data && data.list.map(hourly => <Weather weatherData={hourly}/>)
       }
     </div>
   );

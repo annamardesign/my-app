@@ -6,7 +6,7 @@ const IconType = ({ iconType }) => {
         const ICON_TYPES = {
                 Rain: <FontAwesomeIcon icon={faCloudRain} className="icon"/>,
                 Snow: <FontAwesomeIcon icon={faSnowflake} className="icon" />,
-                Clear:  <FontAwesomeIcon icon={faSun} className="icon" />,
+                Clear: <FontAwesomeIcon icon={faSun} className="icon" />,
                 Wind: <FontAwesomeIcon icon={faWind} className="icon"/>,
                 Clouds: <FontAwesomeIcon icon={faCloud} className="icon" />
         };

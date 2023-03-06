@@ -113,9 +113,10 @@ export const geoApiOptions = {
 };
 export const GEO_API_URL = "https://wft-geo-db.p.rapidapi.com/v1/geo";
 
-export const API_URL = 'https://api.openweathermap.org/data/2.5'
-export const API_KEY = 'b006536bc10ae1818f67ef81dd4e9ad0'
+export const API_URL = 'https://api.openweathermap.org/data/2.5';
+export const API_KEY = 'b006536bc10ae1818f67ef81dd4e9ad0';
 
-export const getWeather = (data) => {
-  return data.list[0].weather[0].main;
+export const convertKelvinToCelsius = (kelvins) => {
+  return (kelvins-273.15).toFixed(2);
 }
+
