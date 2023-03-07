@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { geoApiOptions, GEO_API_URL } from "../common";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -22,12 +22,11 @@ const Search =({getCoordinates}) => {
                   setOptions(response.data);
                 });
             };
-        const handleChange = (e) => {
-                setSearch(e.target.value);
-                getDataFromAPI(e.target.value);
-                
-        }
-        return ( <div>
+        const handleChange = useCallback((e) => {
+          setSearch(e.target.value);
+          setTimeout(() => getDataFromAPI(e.target.value), 2000)     
+        }, []);
+        return ( <React.Fragment>
          <Autocomplete
         style={{ width: 500 }}
         freeSolo
@@ -45,6 +44,6 @@ const Search =({getCoordinates}) => {
           />
         )}
       />
-      </div>)
+      </React.Fragment>)
 }
 export default Search;

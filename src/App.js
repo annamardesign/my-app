@@ -42,11 +42,12 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <React.Fragment>
       <Search  className="search" getCoordinates = {handleCoordinates}/>
+      {data && <p>{data.city.name}</p>}
       {data && data.list.map(hourly => <Weather weatherData={hourly}/>)
       }
-    </div>
+    </React.Fragment>
   );
 }
 
