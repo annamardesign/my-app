@@ -8,7 +8,7 @@ const Weather = ({weatherData}) => (
 <body>
 <div className="container">
   <div className="header">{moment(weatherData.dt_txt).format('dddd')} {moment(weatherData.dt_txt).format('LL')}</div>
-  <div className="icon"><IconType iconType = {weatherData.weather[0].main}/><p className="icon">{weatherData.weather[0].main}</p></div>
+  <div className="icon"><IconType iconType = {weatherData.weather[0].main}/><p className="iconText">{weatherData.weather[0].main}</p></div>
   <div className="weather">
     <p>Min. temperature: {convertKelvinToCelsius(weatherData.main.temp_min)} &deg;C</p>
     <p>Max. temperature: {convertKelvinToCelsius(weatherData.main.temp_max)} &deg;C</p>

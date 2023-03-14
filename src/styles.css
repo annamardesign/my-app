@@ -16,11 +16,16 @@ p {
         color: #0B135A;
 }
 .icon { grid-area: icon;
-        max-width: revert;
-        margin-top: 2rem;
+        margin-top: 3rem;
         color: #2D378D;
         height: 5rem;
         font-weight: bold;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+}
+.iconText {
+        margin-left: 1rem;
 }
 .weather { grid-area: weather; }
 .footer { grid-area: footer;
