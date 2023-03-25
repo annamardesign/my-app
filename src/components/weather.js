@@ -5,7 +5,7 @@ import { convertKelvinToCelsius } from '../common';
 import '../styles.css';
 
 const Weather = ({weatherData}) => (
-<body>
+
 <div className="container">
   <div className="header">{moment(weatherData.dt_txt).format('dddd')} {moment(weatherData.dt_txt).format('LL')}</div>
   <div className="icon"><IconType iconType = {weatherData.weather[0].main}/><p className="iconText">{weatherData.weather[0].main}</p></div>
@@ -18,7 +18,6 @@ const Weather = ({weatherData}) => (
   <div className="footer"><span className="more">{moment(weatherData.dt_txt).format("hh:mm:ss a")}</span></div>
 </div>
 
-</body>
    
 )
 

@@ -26,6 +26,7 @@ const Search =({getCoordinates}) => {
           setSearch(e.target.value);
           setTimeout(() => getDataFromAPI(e.target.value), 2000)     
         }, []);
+        
         return ( <React.Fragment>
          <Autocomplete
         style={{ width: 500 }}
@@ -34,6 +35,7 @@ const Search =({getCoordinates}) => {
         autoHighlight
         loading={options.length === 0}
         options={options}
+        getOptionLabel={(option) => option.label || ""}
         value={search}
         onChange={(e, value) => getCoordinates(value.coordinates)}
         renderInput={(params) => (

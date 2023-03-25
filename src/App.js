@@ -45,7 +45,7 @@ function App() {
     <React.Fragment>
       <Search  className="search" getCoordinates = {handleCoordinates}/>
       {data && <p>{data.city.name}</p>}
-      {data && data.list.map(hourly => <Weather weatherData={hourly}/>)
+      {data && data.list.map((hourly, index) => <Weather key ={index} weatherData={hourly}/>)
       }
     </React.Fragment>
   );
